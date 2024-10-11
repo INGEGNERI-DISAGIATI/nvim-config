@@ -20,7 +20,7 @@ My Neovim configuration for C/C++.
 
 ### Core function (by Tommischiri)
 
-+ Run in editor: (<CTRL-I>)
++ Run in editor: (\<CTRL-I\>)
 + Basic main macro: (@i)
 
 ### Git Integrate
