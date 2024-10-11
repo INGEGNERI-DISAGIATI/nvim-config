@@ -1,7 +1,3 @@
-
-
-English | [中文说明](./README_zh_CN.md)
-
 # Introduce
 
 My Neovim configuration for C/C++.
@@ -21,6 +17,11 @@ My Neovim configuration for C/C++.
 + LSP process: j-hui/fidget.nvim
 + Syntax HighLight: nvim-treesitter/nvim-treesitter
 + LSP symbols list: liuchengxu/vista.vim
+
+### Core function (by Tommischiri)
+
++ Run in editor: (<CTRL-I>)
++ Basic main macro: (@i)
 
 ### Git Integrate
 + Git: tpope/vim-fugitive
