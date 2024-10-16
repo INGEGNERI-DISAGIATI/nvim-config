@@ -16,6 +16,9 @@ end
 
 --vim.cmd("nnoremap <C-I> :w<CR> :echo system('gcc -o nvimoutput ' . expand('%') . ' && ./nvimoutput && rm ./nvimoutput')<CR>")
 --vim.cmd("nnoremap <C-I> :w<CR> :!gcc -o nvimoutput % && ./nvimoutput && rm ./nvimoutput<CR>")
-vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % && stdbuf -o0 ./nvimoutput && rm ./nvimoutput<CR>")
-vim.fn.setreg('i',vim.api.nvim_replace_termcodes('<Esc>gg0i#include <stdio.h><CR><CR>int main(void) {<CR><CR>}<Up><Tab>',true,false,true))
 
+--vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % && stdbuf -o0 ./nvimoutput && rm ./nvimoutput<CR>")
+vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput %<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
+
+
+vim.fn.setreg('i',vim.api.nvim_replace_termcodes('<Esc>gg0i#include <stdio.h><CR><CR>int main(void) {<CR><CR>}<Up><Tab>',true,false,true))
