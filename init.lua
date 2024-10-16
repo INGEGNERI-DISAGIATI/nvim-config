@@ -21,4 +21,4 @@ end
 vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput %<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
 
 
-vim.fn.setreg('i',vim.api.nvim_replace_termcodes('<Esc>gg0i#include <stdio.h><CR><CR>int main(void) {<CR><CR>}<Up><Tab>',true,false,true))
+vim.fn.setreg('i',vim.api.nvim_replace_termcodes('<Esc>gg0i#include <stdio.h><CR>#include <stdbool.h><CR><CR>int main(void) {<CR><CR>}<Up><Tab><Esc>a',true,false,true))
