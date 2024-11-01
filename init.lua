@@ -19,6 +19,7 @@ end
 
 --vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % && stdbuf -o0 ./nvimoutput && rm ./nvimoutput<CR>")
 vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % $HOME/informatica/includes/*.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
+vim.cmd("nnoremap <silent> <C-W>y :let @+ = @0<ENTER>")
 vim.cmd("set whichwrap+=<,>,[,]")
 
 vim.fn.setreg('i',vim.api.nvim_replace_termcodes('<Esc>gg0i#include <stdio.h><CR>#include <stdlib.h><CR>#include <stdbool.h><CR>#include <string.h><CR><CR>int main(void) {<CR><CR>}<Up><Tab><Esc>',true,false,true))
