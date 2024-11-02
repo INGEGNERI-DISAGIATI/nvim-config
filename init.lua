@@ -20,8 +20,8 @@ end
 --vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % && stdbuf -o0 ./nvimoutput && rm ./nvimoutput<CR>")
 vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % $INFINCL/*.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
 vim.cmd("nnoremap <silent> <C-W>y :let @+ = @0<ENTER>")
-vim.cmd("nnoremap <silent> <C-W>j ddp")
-vim.cmd("nnoremap <silent> <C-W>k ddkP")
+vim.cmd("nnoremap <silent> <C-W>k ddp")
+vim.cmd("nnoremap <silent> <C-W>j ddkP")
 
 vim.cmd("set whichwrap+=<,>,[,]")
 
