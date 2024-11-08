@@ -69,3 +69,5 @@ lspconfig['clangd'].setup({
           '.git'
         )
 })
+
+lspconfig['pyright'].setup({})
