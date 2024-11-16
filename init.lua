@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd("FileType", {
         if((vim.bo.filetype == "c") or (vim.bo.filetype == "cpp")) then
             vim.fn.setreg('i',vim.api.nvim_replace_termcodes('<Esc>gg0i#include <stdio.h><CR>#include <stdlib.h><CR>#include <stdbool.h><CR>#include <string.h><CR><CR>int main(void) {<CR><CR>}<Up><Tab><Esc>',true,false,true))
             vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % $INFINCL/*.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
+            vim.cmd("nnoremap <C-W>r :w<CR>:!gcc -o nvimoutput *.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
         elseif(vim.bo.filetype == "python") then
             vim.cmd("nnoremap <C-I> :w<CR>:vert term python3 %<CR>:startinsert<CR>")
         end
