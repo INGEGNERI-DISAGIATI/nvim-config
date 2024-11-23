@@ -70,4 +70,9 @@ lspconfig['clangd'].setup({
         )
 })
 
-lspconfig['pyright'].setup({})
+lspconfig['jdtls'].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = lsp_flags,
+    cmd = { "proot-distro" ,"login", "ubuntu", "--", "./jdtls/bin/jdtls", "-configuration", "/home/user/.cache/jdtls/config", "-data", "/home/user/.cache/jdtls/workspace" }
+})

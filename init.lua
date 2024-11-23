@@ -37,4 +37,28 @@ vim.api.nvim_create_autocmd("FileType", {
         end
     end,
 })
+vim.api.nvim_create_autocmd("LspAttach", {
+  pattern = "*.java",  -- Trigger for any filetype
+  callback = function()
+    --vim.fn.setreg('a', "ok")  -- Set the first workspace folder to register 'a'
+    -- Check if the attached LSP client is jdtls (Java LSP)
+    local clients = vim.lsp.get_active_clients()
+    for _, client in ipairs(clients) do
+      if client.name == 'jdtls' then
+        -- Get the list of workspace folders
+        local workspace_folders = vim.lsp.buf.list_workspace_folders()
+
+        -- If there are workspace folders, set the first one to register 'a'
+        if workspace_folders and #workspace_folders > 0 then
+          local workspace_root = workspace_folders[1]
+          vim.fn.setreg('a', workspace_root)  -- Set the first workspace folder to register 'a'
+          local runString = "nnoremap <C-I> :w<CR>:vert term mvn -f WORKSPACE/pom.xml -q compile exec:java<CR>:startinsert<CR>"
+          local newRunString = runString:gsub("WORKSPACE",workspace_root)
+          vim.cmd(newRunString)
+        end
+        break
+      end
+    end
+  end,
+})
 
