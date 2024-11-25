@@ -29,11 +29,11 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         if((vim.bo.filetype == "c") or (vim.bo.filetype == "cpp")) then
             vim.fn.setreg('i',vim.api.nvim_replace_termcodes('<Esc>gg0i#include <stdio.h><CR>#include <stdlib.h><CR>#include <stdbool.h><CR>#include <string.h><CR><CR>int main(void) {<CR><CR>}<Up><Tab><Esc>',true,false,true))
-            vim.cmd("nnoremap <C-I> :w<CR>:!gcc -o nvimoutput % $INFINCL/*.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
-            vim.cmd("nnoremap <C-W>e :w<CR>:!gcc -o nvimoutput *.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
-            vim.cmd("nnoremap <C-W>r :w<CR>:!gcc -o nvimoutput % -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
+            vim.cmd("nnoremap <C-I> :wa<CR>:!gcc -o nvimoutput % $INFINCL/*.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
+            vim.cmd("nnoremap <C-W>e :wa<CR>:!gcc -o nvimoutput *.c -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
+            vim.cmd("nnoremap <C-W>r :wa<CR>:!gcc -o nvimoutput % -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
         elseif(vim.bo.filetype == "python") then
-            vim.cmd("nnoremap <C-I> :w<CR>:vert term python3 %<CR>:startinsert<CR>")
+            vim.cmd("nnoremap <C-I> :wa<CR>:vert term python3 %<CR>:startinsert<CR>")
         end
     end,
 })
@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         if workspace_folders and #workspace_folders > 0 then
           local workspace_root = workspace_folders[1]
           vim.fn.setreg('a', workspace_root)  -- Set the first workspace folder to register 'a'
-          local runString = "nnoremap <C-I> :w<CR>:vert term mvn -f WORKSPACE/pom.xml -q compile exec:java<CR>:startinsert<CR>"
+          local runString = "nnoremap <C-I> :wa<CR>:vert term mvn -f WORKSPACE/pom.xml -q compile exec:java<CR>:startinsert<CR>"
           local newRunString = runString:gsub("WORKSPACE",workspace_root)
           vim.cmd(newRunString)
         end
