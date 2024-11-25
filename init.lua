@@ -34,6 +34,12 @@ vim.api.nvim_create_autocmd("FileType", {
             vim.cmd("nnoremap <C-W>r :wa<CR>:!gcc -o nvimoutput % -lm<CR><ENTER>:vert term ./nvimoutput<CR>:!rm ./nvimoutput<CR><ENTER>:startinsert<CR>")
         elseif(vim.bo.filetype == "python") then
             vim.cmd("nnoremap <C-I> :wa<CR>:vert term python3 %<CR>:startinsert<CR>")
+        elseif(vim.bo.filetype == "rust") then
+            vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+                command = "w",
+                buffer = 0,
+                nested = true
+            })
         end
     end,
 })

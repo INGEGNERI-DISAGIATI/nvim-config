@@ -7,7 +7,9 @@ end
 local keymap = vim.keymap.set
 
 saga.setup({
-
+    lightbulb = {
+        enable = false,
+    },
     show_outline = {
         win_position = 'right',
         --set special filetype win that outline window split.like NvimTree neotree

@@ -78,3 +78,13 @@ lspconfig['jdtls'].setup({
     flags = lsp_flags,
     cmd = { "proot-distro" ,"login", "ubuntu", "--", "./jdtls/bin/jdtls", "-configuration", "/home/user/.cache/jdtls/config", "-data", "/home/user/.cache/jdtls/workspace" }
 })
+
+lspconfig['rust_analyzer'].setup({
+    settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+})
