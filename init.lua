@@ -40,6 +40,7 @@ vim.api.nvim_create_autocmd("FileType", {
                 buffer = 0,
                 nested = true
             })
+            vim.cmd("nnoremap <C-I> :wa<CR>:vert term cargo run<CR>:startinsert<CR>")
         end
     end,
 })
