@@ -24,6 +24,12 @@ vim.cmd("nnoremap <silent> <C-W>j ddkP")
 
 vim.cmd("set whichwrap+=<,>,[,]")
 
+vim.filetype.add({
+  extension = {
+    pl = "prolog",
+  },
+})
+
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "*",
     callback = function()
@@ -41,6 +47,8 @@ vim.api.nvim_create_autocmd("FileType", {
                 nested = true
             })
             vim.cmd("nnoremap <C-I> :wa<CR>:vert term cargo run<CR>:startinsert<CR>")
+        elseif(vim.bo.filetype == "prolog") then
+            vim.cmd("nnoremap <C-I> :wa<CR>:vert term swipl %<CR>:startinsert<CR>")
         end
     end,
 })
