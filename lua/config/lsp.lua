@@ -72,11 +72,25 @@ lspconfig['clangd'].setup({
 
 lspconfig['pyright'].setup({})
 
+
+--local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+--local workspace_dir = vim.fn.expand("~/.cache/jdtls/workspace/") .. project_name
+local workspace_dir = vim.fn.expand("~/.cache/jdtls/workspace/") .. "project"
+
 lspconfig['jdtls'].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
-    cmd = { "proot-distro" ,"login", "ubuntu", "--", "./jdtls/bin/jdtls", "-configuration", "/home/user/.cache/jdtls/config", "-data", "/home/user/.cache/jdtls/workspace" }
+    cmd = {
+        "java", "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+        "-Dosgi.bundles.defaultStartLevel=4",
+        "-Declipse.product=org.eclipse.jdt.ls.core.product",
+        "-Dlog.protocol=true", "-Dlog.level=ALL",
+        "-Xms1G", "-Xmx2G",
+        "-jar", vim.fn.expand("~/jdtls/plugins/org.eclipse.equinox.launcher_1.6.1000.v20250131-0606.jar"),
+        "-configuration", vim.fn.expand("~/jdtls/config_linux"),
+        "-data", workspace_dir
+    }
 })
 
 lspconfig['rust_analyzer'].setup({
