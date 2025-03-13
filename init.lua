@@ -21,6 +21,7 @@ end
 vim.cmd("nnoremap <silent> <C-W>y :let @+ = @0<ENTER>")
 vim.cmd("nnoremap <silent> <C-W>k ddp")
 vim.cmd("nnoremap <silent> <C-W>j ddkP")
+vim.cmd("nnoremap <silent> <C-t> :ToggleTerm<ENTER>")
 
 vim.cmd("set whichwrap+=<,>,[,]")
 
